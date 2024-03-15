@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temas de Entornos de Desarrollo</title>
+  <link rel="stylesheet" href="/CSS/temas.css">
+  <style>
+    body {
+      background-color: black;
+      font-family: 'Arial Black', Arial, sans-serif; /* Cambia la fuente a Arial Black */
+      color: white; /* Color del texto */
+      text-align: center; /* Centra el texto */
+      padding-top: 20px; /* Espacio superior */
+    }
+
+    h1 {
+      font-size: 36px; /* Tamaño del título */
+    }
+    
+    a {
+  display: inline-block;
+  background-color: #fd4766; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  text-decoration: none;
+  padding: 15px 25px; /* Aumenta el espacio interno */
+  border-radius: 8px; /* Añade esquinas redondeadas */
+  font-size: 18px; /* Tamaño del texto */
+  font-weight: bold; /* Texto en negrita */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+a:hover {
+  background-color: #ff6188; /* Color de fondo al pasar el ratón */
+}
+  </style>
+</head>
+<body>
+    <a href="/HTML/inicio.html">Ir al inicio</a>
+
+    <h1>TEMAS DE ENTORNOS DE DESARROLLO</h1> <!-- Título -->
+
+    <div id="carousel">
+        <div class="hideLeft" onclick="window.location.href='/HTML/tema0.html'">
+            <img src="/IMAGENES/tema0.png">
+        </div>
+     
+        <div class="prevLeftSecond" onclick="window.location.href='/HTML/tema1.html'">
+            <img src="/IMAGENES/tema1.png">
+        </div>
+
+        <div class="prev" onclick="window.location.href='/HTML/tema2.html'">
+            <img src="/IMAGENES/tema2.png">
+        </div>
+
+        <div class="selected" onclick="window.location.href='/HTML/tema3.html'">
+            <img src="/IMAGENES/tema3.png">
+        </div>
+
+        <div class="next" onclick="window.location.href='/HTML/tema4.html'">
+            <img src="/IMAGENES/tema4.png">
+        </div>
+
+        <div class="nextRightSecond" onclick="window.location.href='/HTML/tema5.html'">
+            <img src="/IMAGENES/tema5.png">
+        </div>
+    </div>
+ 
+    <div class="buttons">
+        <button id="prev" onclick="moveToSelected('prev')">Anterior</button>
+        <button id="next" onclick="moveToSelected('next')">Siguiente</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+       function moveToSelected(element) {
+          if (typeof element === 'string') {
+            var selected = $(".selected");
+            if (element === 'next') {
+              selected = selected.next();
+            } else if (element === 'prev') {
+              selected = selected.prev();
+            }
+          } else {
+            var selected = $(element).parent();
+          }
+
+          var next = $(selected).next();
+          var prev = $(selected).prev();
+          var prevSecond = $(prev).prev();
+          var nextSecond = $(next).next();
+        
+          $(selected).removeClass().addClass("selected");
+        
+          $(prev).removeClass().addClass("prev");
+          $(next).removeClass().addClass("next");
+        
+          $(nextSecond).removeClass().addClass("nextRightSecond");
+          $(prevSecond).removeClass().addClass("prevLeftSecond");
+        
+          $(nextSecond).nextAll().removeClass().addClass('hideRight');
+          $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+        
+        }
+
+        // Eventos teclado
+        $(document).keydown(function(e) {
+            switch(e.which) {
+                case 37: // left
+                moveToSelected('prev');
+                break;
+        
+                case 39: // right
+                moveToSelected('next');
+                break;
+        
+                default: return;
+            }
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
