@@ -4,7 +4,7 @@
 
 ## Descripción
 
-Esta página web fue creada con el propósito de mostrar mi portafolio, proyectos personales, y cualquier otra información relevante sobre mí. Utilicé tecnologías web como HTML, CSS y JavaScript para diseñar y desarrollar esta página.
+Esta página web fue creada con el propósito de mostrar un resumen de los ejercicios, Utilicé tecnologías web como HTML, CSS y JavaScript para diseñar y desarrollar esta página.
 
 ## Acceso
 
@@ -14,9 +14,9 @@ Puedes acceder a mi página web en el siguiente enlace: [1913028.github.io](http
 
 En mi página web encontrarás:
 
-- **Portafolio:** Una selección de mis proyectos pasados y actuales.
-- **Sobre Mí:** Una breve descripción sobre quién soy y mis intereses.
-- **Contacto:** Formas de ponerse en contacto conmigo.
+- **inicio:** un inicio con html y css sobre la web.
+- **temas:** Una selección de todos los temas realizados en entornos de desarrollo.
+- **Contacto:** Un formulario.
 
 ## Contribución
 
@@ -30,8 +30,8 @@ Si encuentras algún problema con la página o tienes sugerencias de mejora, ¡n
 
 ## Autor
 
-- **Nombre:** [Tu nombre aquí]
-- **Correo Electrónico:** [Tu correo electrónico]
+- **Nombre:** [Cristian Ayala Sanchez]
+- **Correo Electrónico:** [1913028@alu.murciaeduca.es]
 
 ¡Gracias por visitar mi página web!
 
