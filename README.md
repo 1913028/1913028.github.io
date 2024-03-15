@@ -18,10 +18,9 @@ En mi página web encontrarás:
 - **temas:** Una selección de todos los temas realizados en entornos de desarrollo.
 - **Contacto:** Un formulario.
 
-## Contribución
+## problemas
 
-Si encuentras algún problema con la página o tienes sugerencias de mejora, ¡no dudes en abrir un issue o enviar un pull request!
-
+No me funciona bien el javascript y no entiendo porque
 ## Tecnologías Utilizadas
 
 - HTML
