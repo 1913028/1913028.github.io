@@ -1,55 +1,322 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrisCode: Explora el Universo de la Programación</title>
-    <!-- CSS links -->
-    <link rel="stylesheet" href="CSS/css.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Aquí puedes agregar estilos adicionales si es necesario */
-    </style>
-    <!-- Barra de navegación -->
-    <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="temas.html">Temas</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+  @import "compass/css3";
+
+body{
+  background-image: -moz-linear-gradient(top, #137cbc 0%, #30a3d3 25%, #4ba4be 35%, #4094a1 40%, #c2c7aa 50%, #beaa79 100%);
+  	background-image: -webkit-linear-gradient(top, #137cbc 0%, #30a3d3 25%, #4ba4be 35%, #4094a1 40%, #c2c7aa 50%, #beaa79 100%);
+			background-image: linear-gradient(top, #137cbc 0%, #30a3d3 25%, #4ba4be 35%, #4094a1 40%, #c2c7aa 50%, #beaa79 100%);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color:#c0c0c0;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-weight: 300;
+	font-size:100%;
+	letter-spacing: 1.2px;
+}
+.wrap{
+	width:480px;
+	margin:50px auto 0;
+}
+.cal{
+  position:relative;
+	width:480px;
+	height:auto;
+	padding:10px 0;
+	margin: auto;
+	background:#232323;
+	border:#000 1px solid;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+	box-shadow:rgba(0,0,0,0.8) 0px 5px 40px, inset rgba(255,255,255,0.9) 0px 1px 1px -1px;
+		background-image: -webkit-linear-gradient( top, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%), -webkit-radial-gradient(center 150px, circle, #444, #111);
+			background-image:radial-gradient(center 150px, circle, #444, #111);
+  background-image: -moz-linear-gradient( top, rgba(255,255,255,0) 50%, rgba(255,255,255,0.15) 100%), -moz-radial-gradient(center 150px, circle, #444, #000);
+	overflow: hidden;
+	text-align: center;
+  z-index:0;
+}
+  .cal-bg{
+    display:block;
+  position:relative;
+  padding:0 0 2px 0;
+  width:482px;
+    top:0;
+    left:0;
+  background-color:#333;
+    background-image:-webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 2%);
+    border-radius:5px;
+  &:before{
+    content:"";
+    display:block;
+    position:absolute;
+    right:0;
+    top:0;
+    width:100%;
+    height:3px;
+    background-image:-webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 40%,rgba(255,255,255,0.15) 70%, rgba(255,255,255,0) 100%);
+    background-image:-moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 40%,rgba(255,255,255,0.1) 70%, rgba(255,255,255,0) 100%);
+    z-index:9999;
+  }
+  &:after{
+    content:"";
+    display:block;
+    position:absolute;
+    right:0;
+    bottom:3px;
+    width:100%;
+    height:5px;
+    background-image:-webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 30%,rgba(255,255,255,0.1) 80%, rgba(255,255,255,0) 100%);
+    background-image:-moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 30%,rgba(255,255,255,0) 80%, rgba(255,255,255,0) 100%);
+    box-shadow:rgba(255,255,255,0.6) 0px 5px 50px 0;
+    z-index:9999;
+  }
+    
+  }
+
+.screen{
+	width:424px;
+	height:93px;
+	margin: 12px auto 30px;
+	padding:15px 20px;
+	color:#c0c0c0;
+	text-align: right;
+	font-size: 3em;
+	letter-spacing: 3px;
+	overflow:hidden;
+	border:#000 1px solid;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+	box-shadow:inset rgba(0,0,0,1) 0px 1px 4px, inset rgba(225,225,225,0.3) 0px -2px 4px -2px;
+	-webkit-box-shadow:inset rgba(0,0,0,1) 0px 1px 4px, inset rgba(225,225,225,0.3) 0px -2px 4px -2px;
+	-moz-box-shadow:inset rgba(0,0,0,1) 0px 1px 4px, inset rgba(225,225,225,0.3) 0px -2px 4px -2px;
+	background-image: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%), -moz-linear-gradient(top, #3e3e3e 0%, #303030 100%);
+		background-image: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%), -webkit-linear-gradient(top, #3e3e3e 0%, #303030 100%);
+			background-image: linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%), linear-gradient(top, #3e3e3e 0%, #303030 100%);
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.title{
+	font-size: 1.2em;
+}
+.buttons{
+	padding:0;
+	width:423px;
+	margin:auto;
+	overflow: hidden;
+	list-style: none;
+}
+.buttons li{
+	display:inline;
+	float:left;
+	padding:0px;
+	margin-right:13px;
+	margin-bottom:10px;
+}
+/* remove margin-right on every fourth button */
+.buttons li:nth-child(4n){
+	margin-right:0;
+}
+.buttons a{
+	display:block;
+  position:relative;
+	width:95px;
+	height:68px;
+	padding:18px 0 12px;
+	color:#c0c0c0;
+	font-family: "Myriad Pro", Arial, sans-serif;
+	font-size:1.6em;
+	font-weight: 500;
+	letter-spacing: -2px;
+	background-color:#2f2f2f;
+	border: #000 1px solid;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow:#000 0px -1px 0px;
+	box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+	-webkit-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+	-moz-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+	background-image:-moz-radial-gradient(top center, circle, #363636 0%, #313234 40%, #2f2f2f 100%);
+		background-image:-webkit-radial-gradient(top center, circle, #363636 0%, #313234 40%, #2f2f2f 100%);
+			background-image:radial-gradient(top center, circle, #363636 0%, #313234 40%, #2f2f2f 100%);
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	cursor: pointer;
+  overflow:visible;
+  &:before{
+    content:"";
+    display:block;
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:2px;
+    background-image:-webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+    background-image:-moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+    z-index:9999;
+  }
+  &:after{
+    content:"";
+    display:block;
+    position:absolute;
+    right:0;
+    top:0;
+    width:100%;
+    height:2px;
+    background-image:-webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 30%,rgba(255,255,255,0.1) 80%, rgba(255,255,255,0) 100%);
+    background-image:-moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 30%,rgba(255,255,255,0.1) 80%, rgba(255,255,255,0) 100%);
+    box-shadow:rgba(255,255,255,1) 0px 5px 50px 0;
+  }
+}
+.buttons a:active{
+	box-shadow: inset rgba(0,0,0,0.5) 0px 2px 8px;
+	background-image:-moz-linear-gradient(top, #2f2f2f 0%, #363636 100%);
+		background-image:-webkit-linear-gradient(top, #2f2f2f 0%, #363636 100%);
+			background-image:linear-gradient(top, #2f2f2f 0%, #363636 100%);
+}
+/* tall = button */
+.tall{height:151px !important;}
+/* Wide 0 */
+.wide{width:205px !important;}
+/* shift last row up, because the tall button pushes it down */
+.shift{margin-top:-78px;}
+
+
+/* close, min, max buttons */
+.ctrls{
+	list-style: none;
+	margin:5px 0 0 20px;
+	padding:0;
+	position: absolute;
+}
+.ctrls li{
+	float:left;
+	display:inline;
+}
+.ctrls li a{
+	display: block;
+	width:18px;
+	height:18px;
+	margin-right:10px;
+	border-radius:100%;
+	box-shadow:rgba(255,255,255,0.3) 0px 0px 1px, inset rgba(0,0,0,1) 0px 1px 2px 1px;
+	background-image: -moz-radial-gradient( 9px -4px, #FFF 0px, #fff 2px, rgba(255,255,255,0) 4px), -moz-linear-gradient(bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+	background-image: -webkit-radial-gradient( 9px -4px, #FFF 0px, #fff 2px, rgba(255,255,255,0) 4px), -webkit-linear-gradient(bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+	background-image: radial-gradient( 9px -4px, #FFF 0px, #fff 2px, rgba(255,255,255,0) 4px), linear-gradient(bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+}
+.close a{
+	background-color:#f32c31;
+	
+}
+.min a{background-color:#f7bf67;}
+.max a{background-color:#89cb5a;}
+.h1{
+	text-align: center;
+	color:#fff;
+	font-weight: 400;
+	font-size: 4em;
+	line-height: 0;
+	margin-top:80px;
+	margin-bottom:-60px;
+	text-shadow:#000 0px -1px 0px;
+}
+p{
+	color:#fff;
+	text-shadow: #999 0px -1px 0px;
+	font-size:1.2em;
+	line-height: 2em;
+}
+a{
+	color:#953b3b;
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="cal-bg">
+      <div class="cal">
+        <div class="screen">CALCULAMELA</div>
+        <ul class="buttons">
+          <li><a class="clear" href="#">C</a></li>
+          <li><a class="val" href="#">←</a></li>
+          <li><a class="val" href="#">/</a></li>
+          <li><a class="val" href="#">*</a></li>
+          <li><a class="val" href="#">7</a></li>
+          <li><a class="val" href="#">8</a></li>
+          <li><a class="val" href="#">9</a></li>
+          <li><a class="val" href="#">-</a></li>
+          <li><a class="val" href="#">4</a></li>
+          <li><a class="val" href="#">5</a></li>
+          <li><a class="val" href="#">6</a></li>
+          <li><a class="val" href="#">+</a></li>
+          <li><a class="val" href="#">1</a></li>
+          <li><a class="val" href="#">2</a></li>
+          <li><a class="val" href="#">3</a></li>
+          <li><a class="equal tall" href="#">=</a></li>
+          <li><a class="val wide shift" href="#">0</a></li>
+          <li><a class="val shift" href="#">.</a></li>
         </ul>
-        <div class="icon"></div>
-    </nav>
-
-    <!-- Contenido principal -->
-    <div class="hero">
-        <div class="content">
-            <span class="title">ENTORNOS DE DESARROLLO</span>
-            <h1>Hola, Soy <span>Cristian</span></h1>
-            <p>
-                Soy Cristian, un estudiante apasionado por la programación y el mundo de la tecnología.
-                En esta web, comparto contigo todo el conocimiento que voy adquiriendo en mi viaje de aprendizaje. Desde conceptos básicos hasta técnicas avanzadas,
-                juntos exploraremos el fascinante universo de la programación. Únete a mí mientras descubrimos nuevos horizontes y expandimos nuestros conocimientos.
-            </p>
-            <a href="temas.html" class="btn">APRENDE YA</a>
-        </div>
+      </div>
     </div>
-<p> HOLA </p>
-<br>
-<br>
-<br>
-<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-
-
-<footer>
-  <div class="rounded-social-buttons">
-                    <a class="social-button Github" href="https://github.com/1913028" target="_blank"><i class="fab fa-github"></i></a>
-                    <a class="social-button Youtube" href="www.youtube.com/@CristianAyala05" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a class="social-button Instagram" href="https://www.instagram.com/cristian_as05" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-</footer>
-<!-- JavaScript al final del cuerpo del documento -->
-<script src="JAVASCRIPT/index.js"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>$(document).ready(function() {
+    // Asignar un manejador de eventos al clic de los botones
+    $(".val").click(function(e) {
+      e.preventDefault();
+      var key = $(this).text(); // Obtener el texto del botón
+      appendToScreen(key);
+    });
+  
+    // Asignar un manejador de eventos al clic del botón igual
+    $(".equal").click(function() {
+      calculateResult();
+    });
+  
+    // Asignar un manejador de eventos al clic del botón de limpiar
+    $(".clear").click(function() {
+      clearScreen();
+    });
+  
+    // Función para agregar caracteres a la pantalla
+function appendToScreen(character) {
+  var currentExpression = $(".screen").text();
+  if (currentExpression === "CALCULAMELA") {
+    $(".screen").text(character);
+  } else {
+    if (character === "←") { // Si el carácter es el botón de retroceso
+      $(".screen").text(currentExpression.slice(0, -1)); // Eliminar el último carácter
+    } else {
+      $(".screen").text(currentExpression + character); // Agregar el nuevo carácter
+    }
+  }
+}
+  
+    // Función para calcular el resultado de la expresión
+    function calculateResult() {
+      var expression = $(".screen").text();
+      var result = eval(expression);
+      $(".screen").text(result);
+    }
+  
+    // Función para limpiar la pantalla
+    function clearScreen() {
+      $(".screen").text("CALCULAMELA");
+    }
+  });
+  </script>
 </body>
 </html>
